@@ -51,14 +51,16 @@ jobs:
         uses: actions/download-artifact@v7.0.0
         with:
           name: react build
-
-      - name: Run tests
-        run: npm test -- --watchAll=false
+          path: dist
 
       - name: Check for build file existence
         run: |
           test -f dist/index.html
           echo "Build file exists"
+          
+      - name: Run tests
+        run: npm test -- --watchAll=false
+
 
   docker:
     runs-on: ubuntu-latest
