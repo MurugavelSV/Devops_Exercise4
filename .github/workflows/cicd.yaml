@@ -68,6 +68,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6.0.0
+
+      - name: Download the build file
+        uses: actions/download-artifact@v7.0.0
+        with:
+          name: react build
+          path: dist
     
       - name: Build docker image
         run: docker build -t reactapp:${{ github.sha }} .
